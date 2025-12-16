@@ -24,12 +24,10 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     internal class TraceJsonReader : JsonReader, IJsonLineInfo
     {

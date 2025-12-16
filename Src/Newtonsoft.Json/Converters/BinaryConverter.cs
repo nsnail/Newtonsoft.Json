@@ -25,16 +25,13 @@
 
 #if HAVE_LINQ || HAVE_ADO_NET
 using System;
-using System.Globalization;
-using Newtonsoft.Json.Utilities;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-#if HAVE_ADO_NET
 using System.Data.SqlTypes;
-#endif
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Converters
+namespace Newtonsoft.JsonUtils.Converters
 {
     /// <summary>
     /// Converts a binary value to and from a base 64 string value.

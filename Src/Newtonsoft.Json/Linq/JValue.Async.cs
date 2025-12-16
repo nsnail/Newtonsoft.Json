@@ -28,14 +28,14 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-#if HAVE_BIG_INTEGER
 using System.Numerics;
-#endif
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
+#endif
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     public partial class JValue
     {

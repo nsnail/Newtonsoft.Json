@@ -23,21 +23,22 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json.Serialization;
-#if !HAVE_LINQ
-using Newtonsoft.Json.Utilities.LinqBridge;
-#else
-using System.Linq;
-#endif
-using System.Globalization;
-using Newtonsoft.Json.Utilities;
-using Newtonsoft.Json.Linq;
+
 
 #nullable disable
 
-namespace Newtonsoft.Json.Schema
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using Newtonsoft.JsonUtils.Linq;
+using Newtonsoft.JsonUtils.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
+#if !HAVE_LINQ
+using Newtonsoft.Json.Utilities.LinqBridge;
+#else
+#endif
+namespace Newtonsoft.JsonUtils.Schema
 {
     [Obsolete("JSON Schema validation has been moved to its own package. See https://www.newtonsoft.com/jsonschema for more details.")]
     internal class JsonSchemaBuilder
@@ -46,7 +47,7 @@ namespace Newtonsoft.Json.Schema
         private readonly JsonSchemaResolver _resolver;
         private readonly IDictionary<string, JsonSchema> _documentSchemas;
         private JsonSchema _currentSchema;
-        private JObject _rootSchema;
+        private JsonObject _rootSchema;
 
         public JsonSchemaBuilder(JsonSchemaResolver resolver)
         {
@@ -78,7 +79,7 @@ namespace Newtonsoft.Json.Schema
         {
             JToken schemaToken = JToken.ReadFrom(reader);
 
-            _rootSchema = schemaToken as JObject;
+            _rootSchema = schemaToken as JsonObject;
 
             JsonSchema schema = BuildSchema(schemaToken);
 
@@ -210,7 +211,7 @@ namespace Newtonsoft.Json.Schema
 
         private JsonSchema BuildSchema(JToken token)
         {
-            if (!(token is JObject schemaObject))
+            if (!(token is JsonObject schemaObject))
             {
                 throw JsonException.Create(token, token.Path, "Expected object while parsing schema object, got {0}.".FormatWith(CultureInfo.InvariantCulture, token.Type));
             }
@@ -246,7 +247,7 @@ namespace Newtonsoft.Json.Schema
             return Pop();
         }
 
-        private void ProcessSchemaProperties(JObject schemaObject)
+        private void ProcessSchemaProperties(JsonObject schemaObject)
         {
             foreach (KeyValuePair<string, JToken> property in schemaObject)
             {

@@ -24,16 +24,16 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.JsonUtils.Utilities;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
-using System.Linq;
 #endif
-using Newtonsoft.Json.Utilities;
-using System.Collections;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Represents a collection of <see cref="JToken"/> objects.

@@ -28,9 +28,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Runtime.CompilerServices;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
     /// Contract details for a <see cref="Type"/> used by the <see cref="JsonSerializer"/>.

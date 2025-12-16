@@ -26,13 +26,12 @@
 #if HAVE_ASYNC
 
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     public abstract partial class JContainer
     {
@@ -95,7 +94,7 @@ namespace Newtonsoft.Json.Linq
                         parent = parent.Parent;
                         break;
                     case JsonToken.StartObject:
-                        JObject o = new JObject();
+                        JsonObject o = new JsonObject();
                         o.SetLineInfo(lineInfo, settings);
                         parent.Add(o);
                         parent = o;

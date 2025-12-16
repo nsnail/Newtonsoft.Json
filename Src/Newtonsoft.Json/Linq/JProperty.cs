@@ -26,12 +26,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json.Utilities;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Represents a JSON property.
@@ -221,11 +221,11 @@ namespace Newtonsoft.Json.Linq
                 return;
             }
 
-            ((JObject?)Parent)?.InternalPropertyChanging(this);
+            ((JsonObject?)Parent)?.InternalPropertyChanging(this);
 
             base.SetItem(0, item);
 
-            ((JObject?)Parent)?.InternalPropertyChanged(this);
+            ((JsonObject?)Parent)?.InternalPropertyChanged(this);
         }
 
         internal override bool RemoveItem(JToken? item)

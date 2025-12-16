@@ -23,9 +23,9 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
     /// A camel case naming strategy.
@@ -40,7 +40,7 @@ namespace Newtonsoft.Json.Serialization
         /// </param>
         /// <param name="overrideSpecifiedNames">
         /// A flag indicating whether explicitly specified property names should be processed,
-        /// e.g. a property name customized with a <see cref="JsonPropertyAttribute"/>.
+        /// e.g. a property name customized with a <see cref="JsonPropertiesAttribute"/>.
         /// </param>
         public CamelCaseNamingStrategy(bool processDictionaryKeys, bool overrideSpecifiedNames)
         {
@@ -56,7 +56,7 @@ namespace Newtonsoft.Json.Serialization
         /// </param>
         /// <param name="overrideSpecifiedNames">
         /// A flag indicating whether explicitly specified property names should be processed,
-        /// e.g. a property name customized with a <see cref="JsonPropertyAttribute"/>.
+        /// e.g. a property name customized with a <see cref="JsonPropertiesAttribute"/>.
         /// </param>
         /// <param name="processExtensionDataNames">
         /// A flag indicating whether extension data names should be processed.

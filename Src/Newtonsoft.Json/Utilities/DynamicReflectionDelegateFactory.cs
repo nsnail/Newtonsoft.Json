@@ -25,17 +25,16 @@
 
 #if HAVE_REFLECTION_EMIT
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Reflection;
+using System.Reflection.Emit;
+using Newtonsoft.JsonUtils.Serialization;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #endif
-using System.Reflection;
-using System.Reflection.Emit;
-using Newtonsoft.Json.Serialization;
-using System.Globalization;
 
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     internal class DynamicReflectionDelegateFactory : ReflectionDelegateFactory
     {

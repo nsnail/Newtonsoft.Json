@@ -27,7 +27,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Represents a view of a <see cref="JProperty"/>.
@@ -43,9 +43,9 @@ namespace Newtonsoft.Json.Linq
         {
         }
 
-        private static JObject CastInstance(object instance)
+        private static JsonObject CastInstance(object instance)
         {
-            return (JObject)instance;
+            return (JsonObject)instance;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Newtonsoft.Json.Linq
         /// <param name="component">The component with the property for which to retrieve the value.</param>
         public override object? GetValue(object? component)
         {
-            return (component as JObject)?[Name];
+            return (component as JsonObject)?[Name];
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Newtonsoft.Json.Linq
         /// <param name="value">The new value.</param>
         public override void SetValue(object? component, object? value)
         {
-            if (component is JObject o)
+            if (component is JsonObject o)
             {
                 JToken token = value as JToken ?? new JValue(value);
 
@@ -116,7 +116,7 @@ namespace Newtonsoft.Json.Linq
         /// <see cref="PropertyDescriptor.SetValue(Object, Object)"/>
         /// methods are invoked, the object specified might be an instance of this type.
         /// </returns>
-        public override Type ComponentType => typeof(JObject);
+        public override Type ComponentType => typeof(JsonObject);
 
         /// <summary>
         /// When overridden in a derived class, gets a value indicating whether this property is read-only.

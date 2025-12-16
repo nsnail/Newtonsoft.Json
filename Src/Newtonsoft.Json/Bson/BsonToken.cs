@@ -23,12 +23,12 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
+#nullable disable
+
 using System.Collections;
 using System.Collections.Generic;
 
-#nullable disable
-
-namespace Newtonsoft.Json.Bson
+namespace Newtonsoft.JsonUtils.Bson
 {
     internal abstract class BsonToken
     {

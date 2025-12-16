@@ -24,18 +24,17 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Reflection;
-using Newtonsoft.Json.Utilities;
-using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-
+using System.Reflection;
+using Newtonsoft.JsonUtils.Utilities;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #endif
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
     /// Contract details for a <see cref="System.Type"/> used by the <see cref="JsonSerializer"/>.

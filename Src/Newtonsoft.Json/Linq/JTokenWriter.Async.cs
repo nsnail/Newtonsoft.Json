@@ -27,9 +27,9 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     public partial class JTokenWriter
     {

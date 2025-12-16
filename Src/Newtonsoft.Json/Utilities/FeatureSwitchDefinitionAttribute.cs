@@ -1,9 +1,11 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System;
+
 #if !NET9_0_OR_GREATER
 
-namespace System.Diagnostics.CodeAnalysis
+namespace Newtonsoft.JsonUtils.Utilities
 {
     /// <summary>
     /// Indicates that the specified public static boolean get-only property

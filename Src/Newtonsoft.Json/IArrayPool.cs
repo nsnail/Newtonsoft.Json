@@ -1,4 +1,4 @@
-﻿namespace Newtonsoft.Json
+﻿namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Provides an interface for using pooled arrays.

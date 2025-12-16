@@ -24,11 +24,9 @@
 #endregion
 
 using System;
-using System.Globalization;
 using System.Runtime.Serialization;
-using Newtonsoft.Json.Utilities;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// The exception thrown when an error occurs while reading JSON text.

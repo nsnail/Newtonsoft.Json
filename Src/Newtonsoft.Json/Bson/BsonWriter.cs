@@ -23,21 +23,18 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-#if HAVE_BIG_INTEGER
-using System.Numerics;
-#endif
-using System.Text;
-using Newtonsoft.Json.Utilities;
-using Newtonsoft.Json.Linq;
-using System.Globalization;
+
 
 #nullable disable
 
-namespace Newtonsoft.Json.Bson
+using System;
+using System.Globalization;
+using System.IO;
+using System.Numerics;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
+#endif
+namespace Newtonsoft.JsonUtils.Bson
 {
     /// <summary>
     /// Represents a writer that provides a fast, non-cached, forward-only way of generating BSON data.

@@ -25,7 +25,7 @@
 
 using System;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Specifies the settings used when selecting JSON.

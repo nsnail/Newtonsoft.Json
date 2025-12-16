@@ -23,7 +23,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Specifies null value handling options for the <see cref="JsonSerializer"/>.
@@ -32,7 +32,7 @@ namespace Newtonsoft.Json
     ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\SerializationTests.cs" region="ReducingSerializedJsonSizeNullValueHandlingObject" title="NullValueHandling Class" />
     ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\SerializationTests.cs" region="ReducingSerializedJsonSizeNullValueHandlingExample" title="NullValueHandling Ignore Example" />
     /// </example>
-    public enum NullValueHandling
+    public enum NullValueHandlings
     {
         /// <summary>
         /// Include null values when serializing and deserializing objects.

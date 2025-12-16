@@ -28,10 +28,10 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.Serialization;
-using Newtonsoft.Json.Utilities;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.JsonUtils.Linq;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
 #pragma warning disable SYSLIB0050
     [RequiresUnreferencedCode(MiscellaneousUtils.TrimWarning)]
@@ -40,9 +40,9 @@ namespace Newtonsoft.Json.Serialization
     {
         private readonly JsonSerializerInternalReader _reader;
         private readonly JsonISerializableContract _contract;
-        private readonly JsonProperty? _member;
+        private readonly JsonProperties? _member;
 
-        public JsonFormatterConverter(JsonSerializerInternalReader reader, JsonISerializableContract contract, JsonProperty? member)
+        public JsonFormatterConverter(JsonSerializerInternalReader reader, JsonISerializableContract contract, JsonProperties? member)
         {
             ValidationUtils.ArgumentNotNull(reader, nameof(reader));
             ValidationUtils.ArgumentNotNull(contract, nameof(contract));

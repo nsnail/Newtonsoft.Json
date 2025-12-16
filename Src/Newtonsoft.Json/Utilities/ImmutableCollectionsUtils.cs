@@ -26,17 +26,15 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Reflection;
+using Newtonsoft.JsonUtils.Serialization;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
-using System.Linq;
 #endif
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using Newtonsoft.Json.Serialization;
 
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     /// <summary>
     /// Helper class for serializing immutable collections.

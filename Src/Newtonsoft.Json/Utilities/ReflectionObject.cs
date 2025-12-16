@@ -23,21 +23,19 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Globalization;
-using System.Diagnostics.CodeAnalysis;
-
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
-
 #endif
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Reflection;
+using Newtonsoft.JsonUtils.Serialization;
 
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     internal class ReflectionMember
     {

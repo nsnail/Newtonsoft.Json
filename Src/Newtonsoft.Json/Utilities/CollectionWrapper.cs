@@ -23,19 +23,18 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using System.Globalization;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
-
 #endif
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     internal interface IWrappedCollection : IList
     {

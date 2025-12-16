@@ -23,12 +23,9 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Represents a collection of <see cref="JsonConverter"/>.

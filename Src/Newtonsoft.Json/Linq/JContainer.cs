@@ -23,26 +23,23 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections.Generic;
 #if HAVE_INOTIFY_COLLECTION_CHANGED
-using System.Collections.Specialized;
 #endif
-using System.Threading;
-using Newtonsoft.Json.Utilities;
-using System.Collections;
-using System.Globalization;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Diagnostics.CodeAnalysis;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
-using System.Linq;
 #endif
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Threading;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Represents a token that can contain other tokens.
@@ -835,7 +832,7 @@ namespace Newtonsoft.Json.Linq
                         parent = parent.Parent;
                         break;
                     case JsonToken.StartObject:
-                        JObject o = new JObject();
+                        JsonObject o = new JsonObject();
                         o.SetLineInfo(lineInfo, settings);
                         parent.Add(o);
                         parent = o;
@@ -911,7 +908,7 @@ namespace Newtonsoft.Json.Linq
         {
             DuplicatePropertyNameHandling duplicatePropertyNameHandling = settings?.DuplicatePropertyNameHandling ?? DuplicatePropertyNameHandling.Replace;
 
-            JObject parentObject = (JObject)parent;
+            JsonObject parentObject = (JsonObject)parent;
             string propertyName = r.Value!.ToString()!;
             JProperty? existingPropertyWithName = parentObject.Property(propertyName, StringComparison.Ordinal);
             if (existingPropertyWithName != null)

@@ -23,15 +23,15 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
+#nullable disable
+
 using System;
 using System.Globalization;
 using System.IO;
 using System.Text;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-#nullable disable
-
-namespace Newtonsoft.Json.Bson
+namespace Newtonsoft.JsonUtils.Bson
 {
     internal class BsonBinaryWriter
     {

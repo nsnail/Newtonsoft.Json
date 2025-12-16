@@ -25,14 +25,14 @@
 
 using System;
 using System.Globalization;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Converters
+namespace Newtonsoft.JsonUtils.Converters
 {
     /// <summary>
     /// Converts a <see cref="DateTime"/> to and from the ISO 8601 date format (e.g. <c>"2008-04-12T12:53Z"</c>).
     /// </summary>
-    public class IsoDateTimeConverter : DateTimeConverterBase
+    public class IsoDateTimeConvertible : DateTimeConverterBase
     {
         private const string DefaultDateTimeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFFK";
 

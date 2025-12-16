@@ -23,12 +23,12 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
+#nullable disable
+
 using System;
 using System.Runtime.Serialization;
 
-#nullable disable
-
-namespace Newtonsoft.Json.Schema
+namespace Newtonsoft.JsonUtils.Schema
 {
     /// <summary>
     /// <para>

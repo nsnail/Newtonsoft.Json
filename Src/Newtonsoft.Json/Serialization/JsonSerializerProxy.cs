@@ -27,11 +27,11 @@ using System;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Runtime.Serialization.Formatters;
-using Newtonsoft.Json.Utilities;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     [RequiresUnreferencedCode(MiscellaneousUtils.TrimWarning)]
     [RequiresDynamicCode(MiscellaneousUtils.AotWarning)]
@@ -85,7 +85,7 @@ namespace Newtonsoft.Json.Serialization
             set => _serializer.MissingMemberHandling = value;
         }
 
-        public override NullValueHandling NullValueHandling
+        public override NullValueHandlings NullValueHandling
         {
             get => _serializer.NullValueHandling;
             set => _serializer.NullValueHandling = value;

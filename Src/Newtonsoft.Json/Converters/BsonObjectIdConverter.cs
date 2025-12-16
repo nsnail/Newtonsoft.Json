@@ -23,14 +23,14 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using Newtonsoft.Json.Bson;
-using System.Globalization;
-using Newtonsoft.Json.Utilities;
-
 #nullable disable
 
-namespace Newtonsoft.Json.Converters
+using System;
+using System.Globalization;
+using Newtonsoft.JsonUtils.Bson;
+using Newtonsoft.JsonUtils.Utilities;
+
+namespace Newtonsoft.JsonUtils.Converters
 {
     /// <summary>
     /// Converts a <see cref="BsonObjectId"/> to and from JSON and BSON.

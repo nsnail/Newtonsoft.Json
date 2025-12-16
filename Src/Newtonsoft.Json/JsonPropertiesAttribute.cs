@@ -24,19 +24,19 @@
 #endregion
 
 using System;
-using Newtonsoft.Json.Serialization;
+using Newtonsoft.JsonUtils.Serialization;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Instructs the <see cref="JsonSerializer"/> to always serialize the member with the specified name.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter, AllowMultiple = false)]
-    public sealed class JsonPropertyAttribute : Attribute
+    public sealed class JsonPropertiesAttribute : Attribute
     {
         // yuck. can't set nullable properties on an attribute in C#
         // have to use this approach to get an unset default state
-        internal NullValueHandling? _nullValueHandling;
+        internal NullValueHandlings? _nullValueHandling;
         internal DefaultValueHandling? _defaultValueHandling;
         internal ReferenceLoopHandling? _referenceLoopHandling;
         internal ObjectCreationHandling? _objectCreationHandling;
@@ -74,7 +74,7 @@ namespace Newtonsoft.Json
         public Type? NamingStrategyType { get; set; }
 
         /// <summary>
-        /// The parameter list to use when constructing the <see cref="NamingStrategy"/> described by <see cref="JsonPropertyAttribute.NamingStrategyType"/>.
+        /// The parameter list to use when constructing the <see cref="NamingStrategy"/> described by <see cref="JsonPropertiesAttribute.NamingStrategyType"/>.
         /// If <c>null</c>, the default constructor is used.
         /// When non-<c>null</c>, there must be a constructor defined in the <see cref="NamingStrategy"/> that exactly matches the number,
         /// order, and type of these parameters.
@@ -90,7 +90,7 @@ namespace Newtonsoft.Json
         /// Gets or sets the null value handling used when serializing this property.
         /// </summary>
         /// <value>The null value handling.</value>
-        public NullValueHandling NullValueHandling
+        public NullValueHandlings NullValueHandlings
         {
             get => _nullValueHandling ?? default;
             set => _nullValueHandling = value;
@@ -205,17 +205,17 @@ namespace Newtonsoft.Json
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonPropertyAttribute"/> class.
+        /// Initializes a new instance of the <see cref="JsonPropertiesAttribute"/> class.
         /// </summary>
-        public JsonPropertyAttribute()
+        public JsonPropertiesAttribute()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonPropertyAttribute"/> class with the specified name.
+        /// Initializes a new instance of the <see cref="JsonPropertiesAttribute"/> class with the specified name.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
-        public JsonPropertyAttribute(string propertyName)
+        public JsonPropertiesAttribute(string propertyName)
         {
             PropertyName = propertyName;
         }

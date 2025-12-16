@@ -27,16 +27,15 @@
 
 using System;
 using System.Globalization;
-using System.Threading;
-#if HAVE_BIG_INTEGER
 using System.Numerics;
-#endif
+using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Utilities;
-using System.Diagnostics;
+using Newtonsoft.JsonUtils.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
+#endif
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     public partial class JsonTextReader
     {
@@ -845,17 +844,17 @@ namespace Newtonsoft.Json
 
         private Task ParseTrueAsync(CancellationToken cancellationToken)
         {
-            return MatchAndSetAsync(JsonConvert.True, JsonToken.Boolean, true, cancellationToken);
+            return MatchAndSetAsync(JsonConvertible.True, JsonToken.Boolean, true, cancellationToken);
         }
 
         private Task ParseFalseAsync(CancellationToken cancellationToken)
         {
-            return MatchAndSetAsync(JsonConvert.False, JsonToken.Boolean, false, cancellationToken);
+            return MatchAndSetAsync(JsonConvertible.False, JsonToken.Boolean, false, cancellationToken);
         }
 
         private Task ParseNullAsync(CancellationToken cancellationToken)
         {
-            return MatchAndSetAsync(JsonConvert.Null, JsonToken.Null, null, cancellationToken);
+            return MatchAndSetAsync(JsonConvertible.Null, JsonToken.Null, null, cancellationToken);
         }
 
         private async Task ParseConstructorAsync(CancellationToken cancellationToken)
@@ -945,17 +944,17 @@ namespace Newtonsoft.Json
 
         private async Task<object> ParseNumberNaNAsync(ReadType readType, CancellationToken cancellationToken)
         {
-            return ParseNumberNaN(readType, await MatchValueWithTrailingSeparatorAsync(JsonConvert.NaN, cancellationToken).ConfigureAwait(false));
+            return ParseNumberNaN(readType, await MatchValueWithTrailingSeparatorAsync(JsonConvertible.NaN, cancellationToken).ConfigureAwait(false));
         }
 
         private async Task<object> ParseNumberPositiveInfinityAsync(ReadType readType, CancellationToken cancellationToken)
         {
-            return ParseNumberPositiveInfinity(readType, await MatchValueWithTrailingSeparatorAsync(JsonConvert.PositiveInfinity, cancellationToken).ConfigureAwait(false));
+            return ParseNumberPositiveInfinity(readType, await MatchValueWithTrailingSeparatorAsync(JsonConvertible.PositiveInfinity, cancellationToken).ConfigureAwait(false));
         }
 
         private async Task<object> ParseNumberNegativeInfinityAsync(ReadType readType, CancellationToken cancellationToken)
         {
-            return ParseNumberNegativeInfinity(readType, await MatchValueWithTrailingSeparatorAsync(JsonConvert.NegativeInfinity, cancellationToken).ConfigureAwait(false));
+            return ParseNumberNegativeInfinity(readType, await MatchValueWithTrailingSeparatorAsync(JsonConvertible.NegativeInfinity, cancellationToken).ConfigureAwait(false));
         }
 
         private async Task ParseNumberAsync(ReadType readType, CancellationToken cancellationToken)
@@ -974,7 +973,7 @@ namespace Newtonsoft.Json
 
         private Task ParseUndefinedAsync(CancellationToken cancellationToken)
         {
-            return MatchAndSetAsync(JsonConvert.Undefined, JsonToken.Undefined, null, cancellationToken);
+            return MatchAndSetAsync(JsonConvertible.Undefined, JsonToken.Undefined, null, cancellationToken);
         }
 
         private async Task<bool> ParsePropertyAsync(CancellationToken cancellationToken)
@@ -1238,7 +1237,7 @@ namespace Newtonsoft.Json
                                     throw CreateUnexpectedCharacterException(currentChar);
                                 }
 
-                                string expected = currentChar == 't' ? JsonConvert.True : JsonConvert.False;
+                                string expected = currentChar == 't' ? JsonConvertible.True : JsonConvertible.False;
                                 if (!await MatchValueWithTrailingSeparatorAsync(expected, cancellationToken).ConfigureAwait(false))
                                 {
                                     throw CreateUnexpectedCharacterException(_chars[_charPos]);
@@ -1496,7 +1495,7 @@ namespace Newtonsoft.Json
                             case 't':
                             case 'f':
                                 bool isTrue = currentChar == 't';
-                                if (!await MatchValueWithTrailingSeparatorAsync(isTrue ? JsonConvert.True : JsonConvert.False, cancellationToken).ConfigureAwait(false))
+                                if (!await MatchValueWithTrailingSeparatorAsync(isTrue ? JsonConvertible.True : JsonConvertible.False, cancellationToken).ConfigureAwait(false))
                                 {
                                     throw CreateUnexpectedCharacterException(_chars[_charPos]);
                                 }

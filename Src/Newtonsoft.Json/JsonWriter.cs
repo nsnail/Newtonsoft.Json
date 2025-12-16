@@ -23,22 +23,20 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.IO;
 #if HAVE_BIG_INTEGER
-using System.Numerics;
 #endif
-using Newtonsoft.Json.Utilities;
-using System.Globalization;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
-
 #endif
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Numerics;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Represents a writer that provides a fast, non-cached, forward-only way of generating JSON data.

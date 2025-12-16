@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using Newtonsoft.JsonUtils.Utilities;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
-using System.Linq;
 #endif
-using Newtonsoft.Json.Utilities;
 
-namespace Newtonsoft.Json.Linq.JsonPath
+namespace Newtonsoft.JsonUtils.Linq.JsonPath
 {
     internal class FieldMultipleFilter : PathFilter
     {
@@ -22,7 +22,7 @@ namespace Newtonsoft.Json.Linq.JsonPath
         {
             foreach (JToken t in current)
             {
-                if (t is JObject o)
+                if (t is JsonObject o)
                 {
                     foreach (string name in Names)
                     {

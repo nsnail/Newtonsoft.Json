@@ -27,9 +27,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     internal abstract class JsonSerializerInternalBase
     {
@@ -81,9 +81,9 @@ namespace Newtonsoft.Json.Serialization
             }
         }
 
-        protected NullValueHandling ResolvedNullValueHandling(JsonObjectContract? containerContract, JsonProperty property)
+        protected NullValueHandlings ResolvedNullValueHandling(JsonObjectContract? containerContract, JsonProperties property)
         {
-            NullValueHandling resolvedNullValueHandling =
+            NullValueHandlings resolvedNullValueHandling =
                 property.NullValueHandling
                 ?? containerContract?.ItemNullValueHandling
                 ?? Serializer._nullValueHandling;

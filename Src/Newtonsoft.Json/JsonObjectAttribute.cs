@@ -25,7 +25,7 @@
 
 using System;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Instructs the <see cref="JsonSerializer"/> how to serialize the object.
@@ -39,7 +39,7 @@ namespace Newtonsoft.Json
         // yuck. can't set nullable properties on an attribute in C#
         // have to use this approach to get an unset default state
         internal Required? _itemRequired;
-        internal NullValueHandling? _itemNullValueHandling;
+        internal NullValueHandlings? _itemNullValueHandling;
 
         /// <summary>
         /// Gets or sets the member serialization.
@@ -65,7 +65,7 @@ namespace Newtonsoft.Json
         /// Gets or sets how the object's properties with null values are handled during serialization and deserialization.
         /// </summary>
         /// <value>How the object's properties with null values are handled during serialization and deserialization.</value>
-        public NullValueHandling ItemNullValueHandling
+        public NullValueHandlings ItemNullValueHandling
         {
             get => _itemNullValueHandling ?? default;
             set => _itemNullValueHandling = value;

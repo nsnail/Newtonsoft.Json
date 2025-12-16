@@ -24,30 +24,27 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq.JsonPath;
-#if HAVE_DYNAMIC
-using System.Dynamic;
-using System.Linq.Expressions;
-#endif
-using System.IO;
-#if HAVE_BIG_INTEGER
-using System.Numerics;
-#endif
-using Newtonsoft.Json.Utilities;
-using System.Diagnostics;
-using System.Globalization;
 using System.Collections;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Dynamic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Numerics;
+using Newtonsoft.JsonUtils.Linq.JsonPath;
+using Newtonsoft.JsonUtils.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
+#endif
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
-using System.Linq;
 #endif
-using Newtonsoft.Json.Serialization;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Represents an abstract JSON token.
@@ -548,7 +545,7 @@ namespace Newtonsoft.Json.Linq
 
         #region Cast from operators
         /// <summary>
-        /// Performs an explicit conversion from <see cref="Newtonsoft.Json.Linq.JToken"/> to <see cref="System.Boolean"/>.
+        /// Performs an explicit conversion from <see cref="JToken"/> to <see cref="System.Boolean"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
@@ -572,7 +569,7 @@ namespace Newtonsoft.Json.Linq
 
 #if HAVE_DATE_TIME_OFFSET
         /// <summary>
-        /// Performs an explicit conversion from <see cref="Newtonsoft.Json.Linq.JToken"/> to <see cref="System.DateTimeOffset"/>.
+        /// Performs an explicit conversion from <see cref="JToken"/> to <see cref="System.DateTimeOffset"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
@@ -916,7 +913,7 @@ namespace Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Performs an explicit conversion from <see cref="Newtonsoft.Json.Linq.JToken"/> to <see cref="System.SByte"/>.
+        /// Performs an explicit conversion from <see cref="JToken"/> to <see cref="System.SByte"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
@@ -1350,7 +1347,7 @@ namespace Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Performs an explicit conversion from <see cref="Newtonsoft.Json.Linq.JToken"/> to <see cref="System.UInt64"/>.
+        /// Performs an explicit conversion from <see cref="JToken"/> to <see cref="System.UInt64"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
@@ -2012,7 +2009,7 @@ namespace Newtonsoft.Json.Linq
         [RequiresDynamicCode(MiscellaneousUtils.AotWarning)]
         public object? ToObject(Type objectType)
         {
-            if (JsonConvert.DefaultSettings == null)
+            if (JsonConvertible.DefaultSettings == null)
             {
                 PrimitiveTypeCode typeCode = ConvertUtils.GetTypeCode(objectType, out bool isEnum);
 
@@ -2220,7 +2217,7 @@ namespace Newtonsoft.Json.Linq
             switch (reader.TokenType)
             {
                 case JsonToken.StartObject:
-                    return JObject.Load(reader, settings);
+                    return JsonObject.Load(reader, settings);
                 case JsonToken.StartArray:
                     return JArray.Load(reader, settings);
                 case JsonToken.StartConstructor:

@@ -24,18 +24,14 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-#if HAVE_BIG_INTEGER
-using System.Numerics;
-#endif
-using System.Text;
 using System.IO;
-using System.Xml;
-using Newtonsoft.Json.Utilities;
-using System.Diagnostics;
+using System.Numerics;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
+#endif
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Represents a writer that provides a fast, non-cached, forward-only way of generating JSON data.
@@ -410,7 +406,7 @@ namespace Newtonsoft.Json
         public override void WriteNull()
         {
             InternalWriteValue(JsonToken.Null);
-            WriteValueInternal(JsonConvert.Null, JsonToken.Null);
+            WriteValueInternal(JsonConvertible.Null, JsonToken.Null);
         }
 
         /// <summary>
@@ -419,7 +415,7 @@ namespace Newtonsoft.Json
         public override void WriteUndefined()
         {
             InternalWriteValue(JsonToken.Undefined);
-            WriteValueInternal(JsonConvert.Undefined, JsonToken.Undefined);
+            WriteValueInternal(JsonConvertible.Undefined, JsonToken.Undefined);
         }
 
         /// <summary>
@@ -443,7 +439,7 @@ namespace Newtonsoft.Json
 
             if (value == null)
             {
-                WriteValueInternal(JsonConvert.Null, JsonToken.Null);
+                WriteValueInternal(JsonConvertible.Null, JsonToken.Null);
             }
             else
             {
@@ -506,7 +502,7 @@ namespace Newtonsoft.Json
         public override void WriteValue(float value)
         {
             InternalWriteValue(JsonToken.Float);
-            WriteValueInternal(JsonConvert.ToString(value, FloatFormatHandling, QuoteChar, false), JsonToken.Float);
+            WriteValueInternal(JsonConvertible.ToString(value, FloatFormatHandling, QuoteChar, false), JsonToken.Float);
         }
 
         /// <summary>
@@ -522,7 +518,7 @@ namespace Newtonsoft.Json
             else
             {
                 InternalWriteValue(JsonToken.Float);
-                WriteValueInternal(JsonConvert.ToString(value.GetValueOrDefault(), FloatFormatHandling, QuoteChar, true), JsonToken.Float);
+                WriteValueInternal(JsonConvertible.ToString(value.GetValueOrDefault(), FloatFormatHandling, QuoteChar, true), JsonToken.Float);
             }
         }
 
@@ -533,7 +529,7 @@ namespace Newtonsoft.Json
         public override void WriteValue(double value)
         {
             InternalWriteValue(JsonToken.Float);
-            WriteValueInternal(JsonConvert.ToString(value, FloatFormatHandling, QuoteChar, false), JsonToken.Float);
+            WriteValueInternal(JsonConvertible.ToString(value, FloatFormatHandling, QuoteChar, false), JsonToken.Float);
         }
 
         /// <summary>
@@ -549,7 +545,7 @@ namespace Newtonsoft.Json
             else
             {
                 InternalWriteValue(JsonToken.Float);
-                WriteValueInternal(JsonConvert.ToString(value.GetValueOrDefault(), FloatFormatHandling, QuoteChar, true), JsonToken.Float);
+                WriteValueInternal(JsonConvertible.ToString(value.GetValueOrDefault(), FloatFormatHandling, QuoteChar, true), JsonToken.Float);
             }
         }
 
@@ -560,7 +556,7 @@ namespace Newtonsoft.Json
         public override void WriteValue(bool value)
         {
             InternalWriteValue(JsonToken.Boolean);
-            WriteValueInternal(JsonConvert.ToString(value), JsonToken.Boolean);
+            WriteValueInternal(JsonConvertible.ToString(value), JsonToken.Boolean);
         }
 
         /// <summary>
@@ -591,7 +587,7 @@ namespace Newtonsoft.Json
         public override void WriteValue(char value)
         {
             InternalWriteValue(JsonToken.String);
-            WriteValueInternal(JsonConvert.ToString(value), JsonToken.String);
+            WriteValueInternal(JsonConvertible.ToString(value), JsonToken.String);
         }
 
         /// <summary>
@@ -622,7 +618,7 @@ namespace Newtonsoft.Json
         public override void WriteValue(decimal value)
         {
             InternalWriteValue(JsonToken.Float);
-            WriteValueInternal(JsonConvert.ToString(value), JsonToken.Float);
+            WriteValueInternal(JsonConvertible.ToString(value), JsonToken.Float);
         }
 
         /// <summary>

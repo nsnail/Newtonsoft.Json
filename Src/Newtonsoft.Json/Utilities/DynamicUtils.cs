@@ -26,22 +26,19 @@
 #if HAVE_DYNAMIC
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
-using System.Linq;
+using System.Globalization;
 using System.Linq.Expressions;
-#if !HAVE_REFLECTION_BINDER
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using Newtonsoft.JsonUtils.Serialization;
+#if !HAVE_REFLECTION_BINDER
 #else
 using Microsoft.CSharp.RuntimeBinder;
 #endif
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Globalization;
-using Newtonsoft.Json.Serialization;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     internal static class DynamicUtils
     {

@@ -25,20 +25,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Newtonsoft.Json.Utilities;
-using System.Globalization;
-using System.Runtime.CompilerServices;
 using System.Diagnostics.CodeAnalysis;
-#if HAVE_DYNAMIC
 using System.Dynamic;
+using System.Globalization;
 using System.Linq.Expressions;
-#endif
-#if HAVE_BIG_INTEGER
 using System.Numerics;
-#endif
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Represents a value in JSON (string, integer, date, etc).

@@ -24,16 +24,15 @@
 #endregion
 
 using System;
-using System.Runtime.CompilerServices;
-using System.IO;
 using System.Globalization;
-using System.Diagnostics;
-#if HAVE_BIG_INTEGER
+using System.IO;
 using System.Numerics;
+using System.Runtime.CompilerServices;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
 #endif
-using Newtonsoft.Json.Utilities;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     internal enum ReadType
     {
@@ -671,7 +670,7 @@ namespace Newtonsoft.Json
                                     _charPos++;
                                     throw CreateUnexpectedCharacterException(currentChar);
                                 }
-                                string expected = currentChar == 't' ? JsonConvert.True : JsonConvert.False;
+                                string expected = currentChar == 't' ? JsonConvertible.True : JsonConvertible.False;
                                 if (!MatchValueWithTrailingSeparator(expected))
                                 {
                                     throw CreateUnexpectedCharacterException(_chars[_charPos]);
@@ -835,7 +834,7 @@ namespace Newtonsoft.Json
                             case 't':
                             case 'f':
                                 bool isTrue = currentChar == 't';
-                                string expected = isTrue ? JsonConvert.True : JsonConvert.False;
+                                string expected = isTrue ? JsonConvertible.True : JsonConvertible.False;
 
                                 if (!MatchValueWithTrailingSeparator(expected))
                                 {
@@ -2459,7 +2458,7 @@ namespace Newtonsoft.Json
             // check characters equal 'true'
             // and that it is followed by either a separator character
             // or the text ends
-            if (MatchValueWithTrailingSeparator(JsonConvert.True))
+            if (MatchValueWithTrailingSeparator(JsonConvertible.True))
             {
                 SetToken(JsonToken.Boolean, BoxedPrimitives.BooleanTrue);
             }
@@ -2471,7 +2470,7 @@ namespace Newtonsoft.Json
 
         private void ParseNull()
         {
-            if (MatchValueWithTrailingSeparator(JsonConvert.Null))
+            if (MatchValueWithTrailingSeparator(JsonConvertible.Null))
             {
                 SetToken(JsonToken.Null);
             }
@@ -2483,7 +2482,7 @@ namespace Newtonsoft.Json
 
         private void ParseUndefined()
         {
-            if (MatchValueWithTrailingSeparator(JsonConvert.Undefined))
+            if (MatchValueWithTrailingSeparator(JsonConvertible.Undefined))
             {
                 SetToken(JsonToken.Undefined);
             }
@@ -2495,7 +2494,7 @@ namespace Newtonsoft.Json
 
         private void ParseFalse()
         {
-            if (MatchValueWithTrailingSeparator(JsonConvert.False))
+            if (MatchValueWithTrailingSeparator(JsonConvertible.False))
             {
                 SetToken(JsonToken.Boolean, BoxedPrimitives.BooleanFalse);
             }
@@ -2507,7 +2506,7 @@ namespace Newtonsoft.Json
 
         private object ParseNumberNegativeInfinity(ReadType readType)
         {
-            return ParseNumberNegativeInfinity(readType, MatchValueWithTrailingSeparator(JsonConvert.NegativeInfinity));
+            return ParseNumberNegativeInfinity(readType, MatchValueWithTrailingSeparator(JsonConvertible.NegativeInfinity));
         }
 
         private object ParseNumberNegativeInfinity(ReadType readType, bool matched)
@@ -2525,8 +2524,8 @@ namespace Newtonsoft.Json
                         }
                         break;
                     case ReadType.ReadAsString:
-                        SetToken(JsonToken.String, JsonConvert.NegativeInfinity);
-                        return JsonConvert.NegativeInfinity;
+                        SetToken(JsonToken.String, JsonConvertible.NegativeInfinity);
+                        return JsonConvertible.NegativeInfinity;
                 }
 
                 throw JsonReaderException.Create(this, "Cannot read -Infinity value.");
@@ -2537,7 +2536,7 @@ namespace Newtonsoft.Json
 
         private object ParseNumberPositiveInfinity(ReadType readType)
         {
-            return ParseNumberPositiveInfinity(readType, MatchValueWithTrailingSeparator(JsonConvert.PositiveInfinity));
+            return ParseNumberPositiveInfinity(readType, MatchValueWithTrailingSeparator(JsonConvertible.PositiveInfinity));
         }
         private object ParseNumberPositiveInfinity(ReadType readType, bool matched)
         {
@@ -2554,8 +2553,8 @@ namespace Newtonsoft.Json
                         }
                         break;
                     case ReadType.ReadAsString:
-                        SetToken(JsonToken.String, JsonConvert.PositiveInfinity);
-                        return JsonConvert.PositiveInfinity;
+                        SetToken(JsonToken.String, JsonConvertible.PositiveInfinity);
+                        return JsonConvertible.PositiveInfinity;
                 }
 
                 throw JsonReaderException.Create(this, "Cannot read Infinity value.");
@@ -2566,7 +2565,7 @@ namespace Newtonsoft.Json
 
         private object ParseNumberNaN(ReadType readType)
         {
-            return ParseNumberNaN(readType, MatchValueWithTrailingSeparator(JsonConvert.NaN));
+            return ParseNumberNaN(readType, MatchValueWithTrailingSeparator(JsonConvertible.NaN));
         }
 
         private object ParseNumberNaN(ReadType readType, bool matched)
@@ -2584,8 +2583,8 @@ namespace Newtonsoft.Json
                         }
                         break;
                     case ReadType.ReadAsString:
-                        SetToken(JsonToken.String, JsonConvert.NaN);
-                        return JsonConvert.NaN;
+                        SetToken(JsonToken.String, JsonConvertible.NaN);
+                        return JsonConvertible.NaN;
                 }
 
                 throw JsonReaderException.Create(this, "Cannot read NaN value.");

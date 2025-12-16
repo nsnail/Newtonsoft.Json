@@ -24,16 +24,16 @@
 #endregion
 
 #if HAVE_ADO_NET
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Newtonsoft.Json.Utilities;
-using System;
-using System.Data;
-using Newtonsoft.Json.Serialization;
+using Newtonsoft.JsonUtils.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Converters
+namespace Newtonsoft.JsonUtils.Converters
 {
     /// <summary>
     /// Converts a <see cref="DataTable"/> to and from JSON.
@@ -68,7 +68,7 @@ namespace Newtonsoft.Json.Converters
                 {
                     object columnValue = row[column];
 
-                    if (serializer.NullValueHandling == NullValueHandling.Ignore && (columnValue == null || columnValue == DBNull.Value))
+                    if (serializer.NullValueHandling == NullValueHandlings.Ignore && (columnValue == null || columnValue == DBNull.Value))
                     {
                         continue;
                     }

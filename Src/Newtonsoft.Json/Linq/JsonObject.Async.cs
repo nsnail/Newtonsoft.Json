@@ -25,16 +25,15 @@
 
 #if HAVE_ASYNC
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
-    public partial class JObject
+    public partial class JsonObject
     {
         /// <summary>
         /// Writes this token to a <see cref="JsonWriter"/> asynchronously.
@@ -79,29 +78,29 @@ namespace Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Asynchronously loads a <see cref="JObject"/> from a <see cref="JsonReader"/>.
+        /// Asynchronously loads a <see cref="JsonObject"/> from a <see cref="JsonReader"/>.
         /// </summary>
-        /// <param name="reader">A <see cref="JsonReader"/> that will be read for the content of the <see cref="JObject"/>.</param>
+        /// <param name="reader">A <see cref="JsonReader"/> that will be read for the content of the <see cref="JsonObject"/>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns>
         /// A <see cref="Task{TResult}"/> that represents the asynchronous load. The <see cref="Task{TResult}.Result"/>
-        /// property returns a <see cref="JObject"/> that contains the JSON that was read from the specified <see cref="JsonReader"/>.</returns>
-        public new static Task<JObject> LoadAsync(JsonReader reader, CancellationToken cancellationToken = default)
+        /// property returns a <see cref="JsonObject"/> that contains the JSON that was read from the specified <see cref="JsonReader"/>.</returns>
+        public new static Task<JsonObject> LoadAsync(JsonReader reader, CancellationToken cancellationToken = default)
         {
             return LoadAsync(reader, null, cancellationToken);
         }
 
         /// <summary>
-        /// Asynchronously loads a <see cref="JObject"/> from a <see cref="JsonReader"/>.
+        /// Asynchronously loads a <see cref="JsonObject"/> from a <see cref="JsonReader"/>.
         /// </summary>
-        /// <param name="reader">A <see cref="JsonReader"/> that will be read for the content of the <see cref="JObject"/>.</param>
+        /// <param name="reader">A <see cref="JsonReader"/> that will be read for the content of the <see cref="JsonObject"/>.</param>
         /// <param name="settings">The <see cref="JsonLoadSettings"/> used to load the JSON.
         /// If this is <c>null</c>, default load settings will be used.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns>
         /// A <see cref="Task{TResult}"/> that represents the asynchronous load. The <see cref="Task{TResult}.Result"/>
-        /// property returns a <see cref="JObject"/> that contains the JSON that was read from the specified <see cref="JsonReader"/>.</returns>
-        public new static async Task<JObject> LoadAsync(JsonReader reader, JsonLoadSettings? settings, CancellationToken cancellationToken = default)
+        /// property returns a <see cref="JsonObject"/> that contains the JSON that was read from the specified <see cref="JsonReader"/>.</returns>
+        public new static async Task<JsonObject> LoadAsync(JsonReader reader, JsonLoadSettings? settings, CancellationToken cancellationToken = default)
         {
             ValidationUtils.ArgumentNotNull(reader, nameof(reader));
 
@@ -120,7 +119,7 @@ namespace Newtonsoft.Json.Linq
                 throw JsonReaderException.Create(reader, "Error reading JObject from JsonReader. Current JsonReader item is not an object: {0}".FormatWith(CultureInfo.InvariantCulture, reader.TokenType));
             }
 
-            JObject o = new JObject();
+            JsonObject o = new JsonObject();
             o.SetLineInfo(reader as IJsonLineInfo, settings);
 
             await o.ReadTokenFromAsync(reader, settings, cancellationToken).ConfigureAwait(false);

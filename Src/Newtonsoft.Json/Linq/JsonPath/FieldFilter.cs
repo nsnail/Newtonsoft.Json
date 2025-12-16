@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Globalization;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq.JsonPath
+namespace Newtonsoft.JsonUtils.Linq.JsonPath
 {
     internal class FieldFilter : PathFilter
     {
@@ -17,7 +17,7 @@ namespace Newtonsoft.Json.Linq.JsonPath
         {
             foreach (JToken t in current)
             {
-                if (t is JObject o)
+                if (t is JsonObject o)
                 {
                     if (Name != null)
                     {

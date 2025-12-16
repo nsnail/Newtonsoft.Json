@@ -24,12 +24,10 @@
 #endregion
 
 using System;
-using Newtonsoft.Json.Utilities;
 using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Converts an object to and from JSON.

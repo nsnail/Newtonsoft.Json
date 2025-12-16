@@ -23,12 +23,12 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using Newtonsoft.Json.Utilities;
-
 #nullable disable
 
-namespace Newtonsoft.Json.Bson
+using System;
+using Newtonsoft.JsonUtils.Utilities;
+
+namespace Newtonsoft.JsonUtils.Bson
 {
     /// <summary>
     /// Represents a BSON Oid (object id).

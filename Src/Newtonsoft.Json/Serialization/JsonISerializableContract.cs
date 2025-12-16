@@ -25,11 +25,11 @@
 
 #if HAVE_BINARY_SERIALIZATION
 using System;
-using System.Runtime.Serialization;
 using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json.Utilities;
+using System.Runtime.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
     /// Contract details for a <see cref="Type"/> used by the <see cref="JsonSerializer"/>.

@@ -23,12 +23,12 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
+#nullable disable
+
 using System;
 using System.Collections.Generic;
 
-#nullable disable
-
-namespace Newtonsoft.Json.Schema
+namespace Newtonsoft.JsonUtils.Schema
 {
     [Obsolete("JSON Schema validation has been moved to its own package. See https://www.newtonsoft.com/jsonschema for more details.")]
     internal static class JsonSchemaConstants

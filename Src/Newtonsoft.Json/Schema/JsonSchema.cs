@@ -23,17 +23,17 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
+#nullable disable
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Utilities;
 using System.Globalization;
+using System.IO;
+using Newtonsoft.JsonUtils.Linq;
+using Newtonsoft.JsonUtils.Utilities;
 
-#nullable disable
-
-namespace Newtonsoft.Json.Schema
+namespace Newtonsoft.JsonUtils.Schema
 {
     /// <summary>
     /// <para>

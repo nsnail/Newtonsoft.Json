@@ -23,20 +23,17 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json.Utilities;
-using System.Globalization;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
-
 #endif
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Contains the LINQ to JSON extension methods.
@@ -98,9 +95,9 @@ namespace Newtonsoft.Json.Linq
         /// <summary>
         /// Returns a collection of child properties of every object in the source collection.
         /// </summary>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> of <see cref="JObject"/> that contains the source collection.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> of <see cref="JsonObject"/> that contains the source collection.</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="JProperty"/> that contains the properties of every object in the source collection.</returns>
-        public static IJEnumerable<JProperty> Properties(this IEnumerable<JObject> source)
+        public static IJEnumerable<JProperty> Properties(this IEnumerable<JsonObject> source)
         {
             ValidationUtils.ArgumentNotNull(source, nameof(source));
 

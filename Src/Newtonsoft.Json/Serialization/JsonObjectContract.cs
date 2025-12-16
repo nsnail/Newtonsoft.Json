@@ -26,13 +26,12 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Reflection;
 using System.Runtime.Serialization;
 using System.Security;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Linq;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
     /// Contract details for a <see cref="System.Type"/> used by the <see cref="JsonSerializer"/>.
@@ -63,7 +62,7 @@ namespace Newtonsoft.Json.Serialization
         /// Gets or sets how the object's properties with null values are handled during serialization and deserialization.
         /// </summary>
         /// <value>How the object's properties with null values are handled during serialization and deserialization.</value>
-        public NullValueHandling? ItemNullValueHandling { get; set; }
+        public NullValueHandlings? ItemNullValueHandling { get; set; }
 
         /// <summary>
         /// Gets the object's properties.
@@ -72,7 +71,7 @@ namespace Newtonsoft.Json.Serialization
         public JsonPropertyCollection Properties { get; }
 
         /// <summary>
-        /// Gets a collection of <see cref="JsonProperty"/> instances that define the parameters used with <see cref="JsonObjectContract.OverrideCreator"/>.
+        /// Gets a collection of <see cref="JsonProperties"/> instances that define the parameters used with <see cref="JsonObjectContract.OverrideCreator"/>.
         /// </summary>
         public JsonPropertyCollection CreatorParameters
         {
@@ -154,7 +153,7 @@ namespace Newtonsoft.Json.Serialization
                     }
                     else
                     {
-                        foreach (JsonProperty property in Properties)
+                        foreach (JsonProperties property in Properties)
                         {
                             if (property.Required != Required.Default || (property.DefaultValueHandling & DefaultValueHandling.Populate) == DefaultValueHandling.Populate)
                             {

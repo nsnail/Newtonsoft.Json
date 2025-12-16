@@ -23,19 +23,18 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
-
 #endif
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 #nullable disable
 
-namespace Newtonsoft.Json.Schema
+namespace Newtonsoft.JsonUtils.Schema
 {
     [Obsolete("JSON Schema validation has been moved to its own package. See https://www.newtonsoft.com/jsonschema for more details.")]
     internal class JsonSchemaNode

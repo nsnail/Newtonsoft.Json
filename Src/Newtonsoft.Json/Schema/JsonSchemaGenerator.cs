@@ -23,25 +23,23 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Globalization;
-using System.ComponentModel;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Utilities;
-using Newtonsoft.Json.Serialization;
-using System.Diagnostics.CodeAnalysis;
-
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
-
 #endif
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using Newtonsoft.JsonUtils.Linq;
+using Newtonsoft.JsonUtils.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
 
 #nullable disable
 
-namespace Newtonsoft.Json.Schema
+namespace Newtonsoft.JsonUtils.Schema
 {
     /// <summary>
     /// <para>
@@ -411,11 +409,11 @@ namespace Newtonsoft.Json.Schema
         private void GenerateObjectSchema(Type type, JsonObjectContract contract)
         {
             CurrentSchema.Properties = new Dictionary<string, JsonSchema>();
-            foreach (JsonProperty property in contract.Properties)
+            foreach (JsonProperties property in contract.Properties)
             {
                 if (!property.Ignored)
                 {
-                    bool optional = property.NullValueHandling == NullValueHandling.Ignore ||
+                    bool optional = property.NullValueHandling == NullValueHandlings.Ignore ||
                                     HasFlag(property.DefaultValueHandling.GetValueOrDefault(), DefaultValueHandling.Ignore) ||
                                     property.ShouldSerialize != null ||
                                     property.GetIsSpecified != null;

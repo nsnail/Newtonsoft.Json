@@ -25,23 +25,20 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
-using Newtonsoft.Json.Utilities;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
-    /// A collection of <see cref="JsonProperty"/> objects.
+    /// A collection of <see cref="JsonProperties"/> objects.
     /// </summary>
-    public class JsonPropertyCollection : KeyedCollection<string, JsonProperty>
+    public class JsonPropertyCollection : KeyedCollection<string, JsonProperties>
     {
         private readonly Type _type;
-        private readonly List<JsonProperty> _list;
+        private readonly List<JsonProperties> _list;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonPropertyCollection"/> class.
@@ -54,7 +51,7 @@ namespace Newtonsoft.Json.Serialization
             _type = type;
 
             // foreach over List<T> to avoid boxing the Enumerator
-            _list = (List<JsonProperty>)Items;
+            _list = (List<JsonProperties>)Items;
         }
 
         /// <summary>
@@ -62,17 +59,17 @@ namespace Newtonsoft.Json.Serialization
         /// </summary>
         /// <param name="item">The element from which to extract the key.</param>
         /// <returns>The key for the specified element.</returns>
-        protected override string GetKeyForItem(JsonProperty item)
+        protected override string GetKeyForItem(JsonProperties item)
         {
             return item.PropertyName!;
         }
 
         /// <summary>
-        /// Adds a <see cref="JsonProperty"/> object.
+        /// Adds a <see cref="JsonProperties"/> object.
         /// </summary>
         /// <param name="property">The property to add to the collection.</param>
         [RequiresUnreferencedCode(MiscellaneousUtils.TrimWarning)]
-        public void AddProperty(JsonProperty property)
+        public void AddProperty(JsonProperties property)
         {
             MiscellaneousUtils.Assert(property.PropertyName != null);
 
@@ -84,7 +81,7 @@ namespace Newtonsoft.Json.Serialization
                     return;
                 }
 
-                JsonProperty existingProperty = this[property.PropertyName];
+                JsonProperties existingProperty = this[property.PropertyName];
                 bool duplicateProperty = true;
 
                 if (existingProperty.Ignored)
@@ -129,15 +126,15 @@ namespace Newtonsoft.Json.Serialization
         }
 
         /// <summary>
-        /// Gets the closest matching <see cref="JsonProperty"/> object.
+        /// Gets the closest matching <see cref="JsonProperties"/> object.
         /// First attempts to get an exact case match of <paramref name="propertyName"/> and then
         /// a case insensitive match.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
         /// <returns>A matching property if found.</returns>
-        public JsonProperty? GetClosestMatchProperty(string propertyName)
+        public JsonProperties? GetClosestMatchProperty(string propertyName)
         {
-            JsonProperty? property = GetProperty(propertyName, StringComparison.Ordinal);
+            JsonProperties? property = GetProperty(propertyName, StringComparison.Ordinal);
             if (property == null)
             {
                 property = GetProperty(propertyName, StringComparison.OrdinalIgnoreCase);
@@ -146,7 +143,7 @@ namespace Newtonsoft.Json.Serialization
             return property;
         }
 
-        private bool TryGetProperty(string key, [NotNullWhen(true)]out JsonProperty? item)
+        private bool TryGetProperty(string key, [NotNullWhen(true)]out JsonProperties? item)
         {
             if (Dictionary == null)
             {
@@ -163,12 +160,12 @@ namespace Newtonsoft.Json.Serialization
         /// <param name="propertyName">The name of the property to get.</param>
         /// <param name="comparisonType">Type property name string comparison.</param>
         /// <returns>A matching property if found.</returns>
-        public JsonProperty? GetProperty(string propertyName, StringComparison comparisonType)
+        public JsonProperties? GetProperty(string propertyName, StringComparison comparisonType)
         {
             // KeyedCollection has an ordinal comparer
             if (comparisonType == StringComparison.Ordinal)
             {
-                if (TryGetProperty(propertyName, out JsonProperty? property))
+                if (TryGetProperty(propertyName, out JsonProperties? property))
                 {
                     return property;
                 }
@@ -178,7 +175,7 @@ namespace Newtonsoft.Json.Serialization
 
             for (int i = 0; i < _list.Count; i++)
             {
-                JsonProperty property = _list[i];
+                JsonProperties property = _list[i];
                 if (string.Equals(propertyName, property.PropertyName, comparisonType))
                 {
                     return property;

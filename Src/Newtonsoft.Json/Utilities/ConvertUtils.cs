@@ -23,30 +23,25 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 #if HAVE_BIG_INTEGER
-using System.Numerics;
 #endif
 #if !HAVE_GUID_TRY_PARSE
 using System.Text;
 using System.Text.RegularExpressions;
 #endif
-using Newtonsoft.Json.Serialization;
-using System.Reflection;
-using System.Diagnostics.CodeAnalysis;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #endif
-#if HAVE_ADO_NET
-using System.Data.SqlTypes;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Numerics;
+using System.Reflection;
+using Newtonsoft.JsonUtils.Serialization;
 
-#endif
-
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     internal enum PrimitiveTypeCode
     {

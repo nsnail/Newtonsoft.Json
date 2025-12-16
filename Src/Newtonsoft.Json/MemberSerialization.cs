@@ -25,9 +25,9 @@
 
 using System;
 using System.Runtime.Serialization;
-using Newtonsoft.Json.Serialization;
+using Newtonsoft.JsonUtils.Serialization;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Specifies the member serialization options for the <see cref="JsonSerializer"/>.
@@ -36,19 +36,19 @@ namespace Newtonsoft.Json
     {
 #pragma warning disable 1584,1711,1572,1581,1580,1574
         /// <summary>
-        /// All public members are serialized by default. Members can be excluded using <see cref="JsonIgnoreAttribute"/> or <see cref="NonSerializedAttribute"/>.
+        /// All public members are serialized by default. Members can be excluded using <see cref="JsonIgnoresAttribute"/> or <see cref="NonSerializedAttribute"/>.
         /// This is the default member serialization mode.
         /// </summary>
         OptOut = 0,
 
         /// <summary>
-        /// Only members marked with <see cref="JsonPropertyAttribute"/> or <see cref="DataMemberAttribute"/> are serialized.
+        /// Only members marked with <see cref="JsonPropertiesAttribute"/> or <see cref="DataMemberAttribute"/> are serialized.
         /// This member serialization mode can also be set by marking the class with <see cref="DataContractAttribute"/>.
         /// </summary>
         OptIn = 1,
 
         /// <summary>
-        /// All public and private fields are serialized. Members can be excluded using <see cref="JsonIgnoreAttribute"/> or <see cref="NonSerializedAttribute"/>.
+        /// All public and private fields are serialized. Members can be excluded using <see cref="JsonIgnoresAttribute"/> or <see cref="NonSerializedAttribute"/>.
         /// This member serialization mode can also be set by marking the class with <see cref="SerializableAttribute"/>
         /// and setting IgnoreSerializableAttribute on <see cref="DefaultContractResolver"/> to <c>false</c>.
         /// </summary>

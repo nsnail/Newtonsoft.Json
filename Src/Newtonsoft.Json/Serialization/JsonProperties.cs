@@ -24,21 +24,18 @@
 #endregion
 
 using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
-using Newtonsoft.Json.Utilities;
-
+using Newtonsoft.JsonUtils.Utilities;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #endif
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
     /// Maps a JSON property to a .NET member or constructor parameter.
     /// </summary>
-    public class JsonProperty
+    public class JsonProperties
     {
         internal Required? _required;
         internal bool _hasExplicitDefaultValue;
@@ -87,9 +84,9 @@ namespace Newtonsoft.Json.Serialization
         public string? UnderlyingName { get; set; }
 
         /// <summary>
-        /// Gets the <see cref="IValueProvider"/> that will get and set the <see cref="JsonProperty"/> during serialization.
+        /// Gets the <see cref="IValueProvider"/> that will get and set the <see cref="JsonProperties"/> during serialization.
         /// </summary>
-        /// <value>The <see cref="IValueProvider"/> that will get and set the <see cref="JsonProperty"/> during serialization.</value>
+        /// <value>The <see cref="IValueProvider"/> that will get and set the <see cref="JsonProperties"/> during serialization.</value>
         public IValueProvider? ValueProvider { get; set; }
 
         /// <summary>
@@ -135,25 +132,25 @@ namespace Newtonsoft.Json.Serialization
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="JsonProperty"/> is ignored.
+        /// Gets or sets a value indicating whether this <see cref="JsonProperties"/> is ignored.
         /// </summary>
         /// <value><c>true</c> if ignored; otherwise, <c>false</c>.</value>
         public bool Ignored { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="JsonProperty"/> is readable.
+        /// Gets or sets a value indicating whether this <see cref="JsonProperties"/> is readable.
         /// </summary>
         /// <value><c>true</c> if readable; otherwise, <c>false</c>.</value>
         public bool Readable { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="JsonProperty"/> is writable.
+        /// Gets or sets a value indicating whether this <see cref="JsonProperties"/> is writable.
         /// </summary>
         /// <value><c>true</c> if writable; otherwise, <c>false</c>.</value>
         public bool Writable { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="JsonProperty"/> has a member attribute.
+        /// Gets or sets a value indicating whether this <see cref="JsonProperties"/> has a member attribute.
         /// </summary>
         /// <value><c>true</c> if has a member attribute; otherwise, <c>false</c>.</value>
         public bool HasMemberAttribute { get; set; }
@@ -197,9 +194,9 @@ namespace Newtonsoft.Json.Serialization
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="JsonProperty"/> is required.
+        /// Gets or sets a value indicating whether this <see cref="JsonProperties"/> is required.
         /// </summary>
-        /// <value>A value indicating whether this <see cref="JsonProperty"/> is required.</value>
+        /// <value>A value indicating whether this <see cref="JsonProperties"/> is required.</value>
         public Required Required
         {
             get => _required ?? Required.Default;
@@ -223,7 +220,7 @@ namespace Newtonsoft.Json.Serialization
         /// Gets or sets the property null value handling.
         /// </summary>
         /// <value>The null value handling.</value>
-        public NullValueHandling? NullValueHandling { get; set; }
+        public NullValueHandlings? NullValueHandling { get; set; }
 
         /// <summary>
         /// Gets or sets the property default value handling.

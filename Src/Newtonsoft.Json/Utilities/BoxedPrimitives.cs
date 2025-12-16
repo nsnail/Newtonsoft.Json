@@ -24,9 +24,8 @@
 #endregion
 
 using System;
-using System.Diagnostics;
 
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     internal static class BoxedPrimitives
     {

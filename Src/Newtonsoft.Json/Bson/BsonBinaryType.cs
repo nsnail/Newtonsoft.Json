@@ -23,11 +23,11 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-
 #nullable disable
 
-namespace Newtonsoft.Json.Bson
+using System;
+
+namespace Newtonsoft.JsonUtils.Bson
 {
     internal enum BsonBinaryType : byte
     {

@@ -27,14 +27,14 @@
 
 using System;
 using System.Globalization;
-using System.Threading;
-#if HAVE_BIG_INTEGER
 using System.Numerics;
-#endif
+using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
+#endif
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     public abstract partial class JsonWriter
 #if HAVE_ASYNC_DISPOSABLE

@@ -30,9 +30,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Utilities;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     public abstract partial class JToken
     {
@@ -136,7 +136,7 @@ namespace Newtonsoft.Json.Linq
             switch (reader.TokenType)
             {
                 case JsonToken.StartObject:
-                    return await JObject.LoadAsync(reader, settings, cancellationToken).ConfigureAwait(false);
+                    return await JsonObject.LoadAsync(reader, settings, cancellationToken).ConfigureAwait(false);
                 case JsonToken.StartArray:
                     return await JArray.LoadAsync(reader, settings, cancellationToken).ConfigureAwait(false);
                 case JsonToken.StartConstructor:

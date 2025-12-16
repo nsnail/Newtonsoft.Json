@@ -25,22 +25,21 @@
 
 #if (HAVE_XML_DOCUMENT || HAVE_XLINQ)
 
-#if HAVE_BIG_INTEGER
-using System.Numerics;
-#endif
+
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Xml;
-using Newtonsoft.Json.Serialization;
-#if HAVE_XLINQ
-using System.Xml.Linq;
-#endif
-using Newtonsoft.Json.Utilities;
-using System.Runtime.CompilerServices;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using System.Xml;
+using System.Xml.Linq;
+using Newtonsoft.JsonUtils.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_XLINQ
+#endif
 
-namespace Newtonsoft.Json.Converters
+namespace Newtonsoft.JsonUtils.Converters
 {
     #region XmlNodeWrappers
 #if HAVE_XML_DOCUMENT

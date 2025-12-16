@@ -23,27 +23,26 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-using System;
-using System.Collections.Generic;
 #if HAVE_BIG_INTEGER
-using System.Numerics;
 #endif
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
-using Newtonsoft.Json.Utilities;
-using System.Globalization;
-using System.Text.RegularExpressions;
-using System.IO;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
-
 #endif
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Numerics;
+using System.Text.RegularExpressions;
+using Newtonsoft.JsonUtils.Linq;
+using Newtonsoft.JsonUtils.Schema;
+using Newtonsoft.JsonUtils.Utilities;
 
 #nullable disable
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// <para>
@@ -846,7 +845,7 @@ namespace Newtonsoft.Json
 
                 if (notDivisible)
                 {
-                    RaiseError("Integer {0} is not evenly divisible by {1}.".FormatWith(CultureInfo.InvariantCulture, JsonConvert.ToString(value), schema.DivisibleBy), schema);
+                    RaiseError("Integer {0} is not evenly divisible by {1}.".FormatWith(CultureInfo.InvariantCulture, JsonConvertible.ToString(value), schema.DivisibleBy), schema);
                 }
             }
         }
@@ -891,11 +890,11 @@ namespace Newtonsoft.Json
             {
                 if (value > schema.Maximum)
                 {
-                    RaiseError("Float {0} exceeds maximum value of {1}.".FormatWith(CultureInfo.InvariantCulture, JsonConvert.ToString(value), schema.Maximum), schema);
+                    RaiseError("Float {0} exceeds maximum value of {1}.".FormatWith(CultureInfo.InvariantCulture, JsonConvertible.ToString(value), schema.Maximum), schema);
                 }
                 if (schema.ExclusiveMaximum && value == schema.Maximum)
                 {
-                    RaiseError("Float {0} equals maximum value of {1} and exclusive maximum is true.".FormatWith(CultureInfo.InvariantCulture, JsonConvert.ToString(value), schema.Maximum), schema);
+                    RaiseError("Float {0} equals maximum value of {1} and exclusive maximum is true.".FormatWith(CultureInfo.InvariantCulture, JsonConvertible.ToString(value), schema.Maximum), schema);
                 }
             }
 
@@ -903,11 +902,11 @@ namespace Newtonsoft.Json
             {
                 if (value < schema.Minimum)
                 {
-                    RaiseError("Float {0} is less than minimum value of {1}.".FormatWith(CultureInfo.InvariantCulture, JsonConvert.ToString(value), schema.Minimum), schema);
+                    RaiseError("Float {0} is less than minimum value of {1}.".FormatWith(CultureInfo.InvariantCulture, JsonConvertible.ToString(value), schema.Minimum), schema);
                 }
                 if (schema.ExclusiveMinimum && value == schema.Minimum)
                 {
-                    RaiseError("Float {0} equals minimum value of {1} and exclusive minimum is true.".FormatWith(CultureInfo.InvariantCulture, JsonConvert.ToString(value), schema.Minimum), schema);
+                    RaiseError("Float {0} equals minimum value of {1} and exclusive minimum is true.".FormatWith(CultureInfo.InvariantCulture, JsonConvertible.ToString(value), schema.Minimum), schema);
                 }
             }
 
@@ -917,7 +916,7 @@ namespace Newtonsoft.Json
 
                 if (!IsZero(remainder))
                 {
-                    RaiseError("Float {0} is not evenly divisible by {1}.".FormatWith(CultureInfo.InvariantCulture, JsonConvert.ToString(value), schema.DivisibleBy), schema);
+                    RaiseError("Float {0} is not evenly divisible by {1}.".FormatWith(CultureInfo.InvariantCulture, JsonConvertible.ToString(value), schema.DivisibleBy), schema);
                 }
             }
         }

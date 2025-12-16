@@ -25,15 +25,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Globalization;
-#if HAVE_BIG_INTEGER
 using System.Numerics;
+using Newtonsoft.JsonUtils.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
 #endif
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Utilities;
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     /// <summary>
     /// Represents a reader that provides fast, non-cached, forward-only access to serialized JSON data.

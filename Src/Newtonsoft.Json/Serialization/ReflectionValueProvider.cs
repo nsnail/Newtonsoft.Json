@@ -24,11 +24,11 @@
 #endregion
 
 using System;
-using System.Reflection;
-using Newtonsoft.Json.Utilities;
 using System.Globalization;
+using System.Reflection;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
     /// Get and set values for a <see cref="MemberInfo"/> using reflection.

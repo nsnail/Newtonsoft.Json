@@ -27,15 +27,14 @@
 
 using System;
 using System.Globalization;
-using System.Threading;
-#if HAVE_BIG_INTEGER
 using System.Numerics;
-#endif
+using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Utilities;
-using System.Diagnostics;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
+#endif
 
-namespace Newtonsoft.Json
+namespace Newtonsoft.JsonUtils
 {
     public partial class JsonTextWriter
     {
@@ -280,7 +279,7 @@ namespace Newtonsoft.Json
 
         internal Task DoWriteNullAsync(CancellationToken cancellationToken)
         {
-            return WriteValueInternalAsync(JsonToken.Null, JsonConvert.Null, cancellationToken);
+            return WriteValueInternalAsync(JsonToken.Null, JsonConvertible.Null, cancellationToken);
         }
 
         private Task WriteDigitsAsync(ulong uvalue, bool negative, CancellationToken cancellationToken)
@@ -510,7 +509,7 @@ namespace Newtonsoft.Json
             Task task = InternalWriteValueAsync(JsonToken.Undefined, cancellationToken);
             if (task.IsCompletedSuccessfully())
             {
-                return _writer.WriteAsync(JsonConvert.Undefined, cancellationToken);
+                return _writer.WriteAsync(JsonConvertible.Undefined, cancellationToken);
             }
 
             return DoWriteUndefinedAsync(task, cancellationToken);
@@ -519,7 +518,7 @@ namespace Newtonsoft.Json
         private async Task DoWriteUndefinedAsync(Task task, CancellationToken cancellationToken)
         {
             await task.ConfigureAwait(false);
-            await _writer.WriteAsync(JsonConvert.Undefined, cancellationToken).ConfigureAwait(false);
+            await _writer.WriteAsync(JsonConvertible.Undefined, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -556,7 +555,7 @@ namespace Newtonsoft.Json
 
         internal Task DoWriteValueAsync(bool value, CancellationToken cancellationToken)
         {
-            return WriteValueInternalAsync(JsonToken.Boolean, JsonConvert.ToString(value), cancellationToken);
+            return WriteValueInternalAsync(JsonToken.Boolean, JsonConvertible.ToString(value), cancellationToken);
         }
 
         /// <summary>
@@ -645,7 +644,7 @@ namespace Newtonsoft.Json
 
         internal Task DoWriteValueAsync(char value, CancellationToken cancellationToken)
         {
-            return WriteValueInternalAsync(JsonToken.String, JsonConvert.ToString(value), cancellationToken);
+            return WriteValueInternalAsync(JsonToken.String, JsonConvertible.ToString(value), cancellationToken);
         }
 
         /// <summary>
@@ -780,7 +779,7 @@ namespace Newtonsoft.Json
 
         internal Task DoWriteValueAsync(decimal value, CancellationToken cancellationToken)
         {
-            return WriteValueInternalAsync(JsonToken.Float, JsonConvert.ToString(value), cancellationToken);
+            return WriteValueInternalAsync(JsonToken.Float, JsonConvertible.ToString(value), cancellationToken);
         }
 
         /// <summary>
@@ -816,7 +815,7 @@ namespace Newtonsoft.Json
 
         internal Task WriteValueAsync(double value, bool nullable, CancellationToken cancellationToken)
         {
-            return WriteValueInternalAsync(JsonToken.Float, JsonConvert.ToString(value, FloatFormatHandling, QuoteChar, nullable), cancellationToken);
+            return WriteValueInternalAsync(JsonToken.Float, JsonConvertible.ToString(value, FloatFormatHandling, QuoteChar, nullable), cancellationToken);
         }
 
         /// <summary>
@@ -847,7 +846,7 @@ namespace Newtonsoft.Json
 
         internal Task WriteValueAsync(float value, bool nullable, CancellationToken cancellationToken)
         {
-            return WriteValueInternalAsync(JsonToken.Float, JsonConvert.ToString(value, FloatFormatHandling, QuoteChar, nullable), cancellationToken);
+            return WriteValueInternalAsync(JsonToken.Float, JsonConvertible.ToString(value, FloatFormatHandling, QuoteChar, nullable), cancellationToken);
         }
 
         /// <summary>
@@ -1087,7 +1086,7 @@ namespace Newtonsoft.Json
             Task task = InternalWriteValueAsync(JsonToken.String, cancellationToken);
             if (task.IsCompletedSuccessfully())
             {
-                return value == null ? _writer.WriteAsync(JsonConvert.Null, cancellationToken) : WriteEscapedStringAsync(value, true, cancellationToken);
+                return value == null ? _writer.WriteAsync(JsonConvertible.Null, cancellationToken) : WriteEscapedStringAsync(value, true, cancellationToken);
             }
 
             return DoWriteValueAsync(task, value, cancellationToken);
@@ -1096,7 +1095,7 @@ namespace Newtonsoft.Json
         private async Task DoWriteValueAsync(Task task, string? value, CancellationToken cancellationToken)
         {
             await task.ConfigureAwait(false);
-            await (value == null ? _writer.WriteAsync(JsonConvert.Null, cancellationToken) : WriteEscapedStringAsync(value, true, cancellationToken)).ConfigureAwait(false);
+            await (value == null ? _writer.WriteAsync(JsonConvertible.Null, cancellationToken) : WriteEscapedStringAsync(value, true, cancellationToken)).ConfigureAwait(false);
         }
 
         /// <summary>

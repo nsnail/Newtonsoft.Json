@@ -23,7 +23,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-namespace Newtonsoft.Json.Serialization
+namespace Newtonsoft.JsonUtils.Serialization
 {
     /// <summary>
     /// A base class for resolving how property names and dictionary keys are serialized.
@@ -44,7 +44,7 @@ namespace Newtonsoft.Json.Serialization
 
         /// <summary>
         /// A flag indicating whether explicitly specified property names,
-        /// e.g. a property name customized with a <see cref="JsonPropertyAttribute"/>, should be processed.
+        /// e.g. a property name customized with a <see cref="JsonPropertiesAttribute"/>, should be processed.
         /// Defaults to <c>false</c>.
         /// </summary>
         public bool OverrideSpecifiedNames { get; set; }

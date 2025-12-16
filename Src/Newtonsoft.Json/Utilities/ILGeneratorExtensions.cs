@@ -25,10 +25,10 @@
 
 #if HAVE_REFLECTION_EMIT
 using System;
-using System.Reflection.Emit;
 using System.Reflection;
+using System.Reflection.Emit;
 
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     internal static class ILGeneratorExtensions
     {

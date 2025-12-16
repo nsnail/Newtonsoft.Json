@@ -24,14 +24,13 @@
 #endregion
 
 using System;
-using System.Diagnostics;
 using System.Globalization;
-#if HAVE_BIG_INTEGER
 using System.Numerics;
+using Newtonsoft.JsonUtils.Utilities;
+#if HAVE_BIG_INTEGER
 #endif
-using Newtonsoft.Json.Utilities;
 
-namespace Newtonsoft.Json.Linq
+namespace Newtonsoft.JsonUtils.Linq
 {
     /// <summary>
     /// Represents a writer that provides a fast, non-cached, forward-only way of generating JSON data.
@@ -111,7 +110,7 @@ namespace Newtonsoft.Json.Linq
         {
             base.WriteStartObject();
 
-            AddParent(new JObject());
+            AddParent(new JsonObject());
         }
 
         private void AddParent(JContainer container)
@@ -178,7 +177,7 @@ namespace Newtonsoft.Json.Linq
         {
             // avoid duplicate property name exception
             // last property name wins
-            (_parent as JObject)?.Remove(name);
+            (_parent as JsonObject)?.Remove(name);
 
             AddParent(new JProperty(name));
 

@@ -25,7 +25,7 @@
 
 #nullable disable
 
-namespace Newtonsoft.Json.Bson
+namespace Newtonsoft.JsonUtils.Bson
 {
     internal enum BsonType : sbyte
     {

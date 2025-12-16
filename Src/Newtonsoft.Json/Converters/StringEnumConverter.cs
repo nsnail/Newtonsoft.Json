@@ -25,22 +25,17 @@
 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Reflection;
-using System.Runtime.Serialization;
-using Newtonsoft.Json.Utilities;
-using Newtonsoft.Json.Serialization;
 #if !HAVE_LINQ
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
-using System.Linq;
-
 #endif
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using Newtonsoft.JsonUtils.Serialization;
+using Newtonsoft.JsonUtils.Utilities;
 
-namespace Newtonsoft.Json.Converters
+namespace Newtonsoft.JsonUtils.Converters
 {
     /// <summary>
     /// Converts an <see cref="Enum"/> to and from its name string value.
@@ -128,7 +123,7 @@ namespace Newtonsoft.Json.Converters
         /// <summary>
         /// Initializes a new instance of the <see cref="StringEnumConverter"/> class.
         /// </summary>
-        /// <param name="namingStrategyType">The <see cref="System.Type"/> of the <see cref="Newtonsoft.Json.Serialization.NamingStrategy"/> used to write enum text.</param>
+        /// <param name="namingStrategyType">The <see cref="System.Type"/> of the <see cref="Serialization.NamingStrategy"/> used to write enum text.</param>
         public StringEnumConverter(Type namingStrategyType)
         {
             ValidationUtils.ArgumentNotNull(namingStrategyType, nameof(namingStrategyType));
@@ -139,11 +134,11 @@ namespace Newtonsoft.Json.Converters
         /// <summary>
         /// Initializes a new instance of the <see cref="StringEnumConverter"/> class.
         /// </summary>
-        /// <param name="namingStrategyType">The <see cref="System.Type"/> of the <see cref="Newtonsoft.Json.Serialization.NamingStrategy"/> used to write enum text.</param>
+        /// <param name="namingStrategyType">The <see cref="System.Type"/> of the <see cref="Serialization.NamingStrategy"/> used to write enum text.</param>
         /// <param name="namingStrategyParameters">
-        /// The parameter list to use when constructing the <see cref="Newtonsoft.Json.Serialization.NamingStrategy"/> described by <paramref name="namingStrategyType"/>.
+        /// The parameter list to use when constructing the <see cref="Serialization.NamingStrategy"/> described by <paramref name="namingStrategyType"/>.
         /// If <c>null</c>, the default constructor is used.
-        /// When non-<c>null</c>, there must be a constructor defined in the <see cref="Newtonsoft.Json.Serialization.NamingStrategy"/> that exactly matches the number,
+        /// When non-<c>null</c>, there must be a constructor defined in the <see cref="Serialization.NamingStrategy"/> that exactly matches the number,
         /// order, and type of these parameters.
         /// </param>
         public StringEnumConverter(Type namingStrategyType, object[] namingStrategyParameters)
@@ -156,11 +151,11 @@ namespace Newtonsoft.Json.Converters
         /// <summary>
         /// Initializes a new instance of the <see cref="StringEnumConverter"/> class.
         /// </summary>
-        /// <param name="namingStrategyType">The <see cref="System.Type"/> of the <see cref="Newtonsoft.Json.Serialization.NamingStrategy"/> used to write enum text.</param>
+        /// <param name="namingStrategyType">The <see cref="System.Type"/> of the <see cref="Serialization.NamingStrategy"/> used to write enum text.</param>
         /// <param name="namingStrategyParameters">
-        /// The parameter list to use when constructing the <see cref="Newtonsoft.Json.Serialization.NamingStrategy"/> described by <paramref name="namingStrategyType"/>.
+        /// The parameter list to use when constructing the <see cref="Serialization.NamingStrategy"/> described by <paramref name="namingStrategyType"/>.
         /// If <c>null</c>, the default constructor is used.
-        /// When non-<c>null</c>, there must be a constructor defined in the <see cref="Newtonsoft.Json.Serialization.NamingStrategy"/> that exactly matches the number,
+        /// When non-<c>null</c>, there must be a constructor defined in the <see cref="Serialization.NamingStrategy"/> that exactly matches the number,
         /// order, and type of these parameters.
         /// </param>
         /// <param name="allowIntegerValues"><c>true</c> if integers are allowed when serializing and deserializing; otherwise, <c>false</c>.</param>

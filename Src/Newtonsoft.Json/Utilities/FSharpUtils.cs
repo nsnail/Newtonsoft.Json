@@ -24,17 +24,14 @@
 #endregion
 
 #if HAVE_FSHARP_TYPES
-using System.Threading;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using Newtonsoft.Json.Serialization;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.JsonUtils.Serialization;
 
-namespace Newtonsoft.Json.Utilities
+namespace Newtonsoft.JsonUtils.Utilities
 {
     internal class FSharpFunction
     {
